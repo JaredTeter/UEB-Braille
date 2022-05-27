@@ -161,12 +161,12 @@ for i in braille_ascii.split():
     print(i)
 print('\n')
 
-for t in braille_ascii:
-    print(t)
-    cell = ord(t) - 32
-    print(braille[cell][0][0] + ' ' + braille[cell][0][1])
-    print(braille[cell][1][0] + ' ' + braille[cell][1][1])
-    print(braille[cell][2][0] + ' ' + braille[cell][2][1])
-    print('\n')
+for word in braille_ascii.split():
+    print('\n' + word)
+    for x in range(3):
+        for letter in word:
+            cell = ord(letter) - 32
+            print(braille[cell][x][0] + ' ' + braille[cell][x][1], end = "   ")
+        print('')
 
 print("\nEnd of the program\n")
