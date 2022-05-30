@@ -78,7 +78,7 @@ braille = [
 
 # The quick brown fox jumps over the lazy dog
 # text = input()
-text = 'The quick brown fox jumps over the lazy dog 1234567890'
+text = 'But I like it very.'
 braille_ascii = ''
 opening_double_quote = True
 opening_single_quote = True
@@ -86,7 +86,77 @@ print(f"\nUser input is: {text}\n")
 
 for word in text.split():
     braille_ascii += ' '
-    
+
+    if 'but' in word.lower():
+        braille_ascii += 'B'
+        continue
+    elif 'can' in word.lower():
+        braille_ascii += 'C'
+        continue
+    elif 'do' in word.lower():
+        braille_ascii += 'D'
+        continue
+    elif 'every' in word.lower():
+        braille_ascii += 'E'
+        continue
+    elif 'from' in word.lower():
+        braille_ascii += 'F'
+        continue
+    elif 'go' in word.lower():
+        braille_ascii += 'G'
+        continue
+    elif 'have' in word.lower():
+        braille_ascii += 'H'
+        continue
+    elif 'just' in word.lower():
+        braille_ascii += 'J'
+        continue
+    elif 'knowledge' in word.lower():
+        braille_ascii += 'K'
+        continue
+    elif 'like' in word.lower():
+        braille_ascii += 'L'
+        continue
+    elif 'more' in word.lower():
+        braille_ascii += 'M'
+        continue
+    elif 'not' in word.lower():
+        braille_ascii += 'N'
+        continue
+    elif 'people' in word.lower():
+        braille_ascii += 'P'
+        continue
+    elif 'quite' in word.lower():
+        braille_ascii += 'Q'
+        continue
+    elif 'rather' in word.lower():
+        braille_ascii += 'R'
+        continue
+    elif 'so' in word.lower():
+        braille_ascii += 'S'
+        continue
+    elif 'that' in word.lower():
+        braille_ascii += 'T'
+        continue
+    elif 'us' in word.lower():
+        braille_ascii += 'U'
+        continue
+    elif 'very' in word.lower():
+        braille_ascii += 'V'
+        continue
+    elif 'will' in word.lower():
+        braille_ascii += 'W'
+        continue
+    elif 'it' in word.lower():
+        braille_ascii += 'X'
+        continue
+    elif 'you' in word.lower():
+        braille_ascii += 'Y'
+        continue
+    elif 'as' in word.lower():
+        braille_ascii += 'Z'
+        continue
+
     for index, char in enumerate(word):
         # print(char)
 
