@@ -78,83 +78,86 @@ braille = [
 
 # The quick brown fox jumps over the lazy dog
 # text = input()
-text = 'It works'
+text = 'The quick brown fox jumps over the lazy dog 1234567890'
 braille_ascii = ''
 opening_double_quote = True
 opening_single_quote = True
 print(f"\nUser input is: {text}\n")
 
-for index, word in enumerate(text):
-    # print(word)
+for word in text.split():
+    braille_ascii += ' '
+    
+    for index, char in enumerate(word):
+        # print(char)
 
-    if word.isspace():
-        braille_ascii += " "
-    if 33 <= ord(word) <= 47 or 58 <= ord(word) <= 64:  # if character is a symbol
-        if word == '!':
-            braille_ascii += '6'
-        elif word == '"':
-            if opening_double_quote:
+        if char.isspace():
+            braille_ascii += " "
+        if 33 <= ord(char) <= 47 or 58 <= ord(char) <= 64:  # if character is a symbol
+            if char == '!':
+                braille_ascii += '6'
+            elif char == '"':
+                if opening_double_quote:
+                    braille_ascii += '8'
+                    opening_double_quote = False
+                else:
+                    braille_ascii += '0'
+                    opening_double_quote = True
+            elif char == '#':
+                braille_ascii += '#'
+            elif char == '$':
+                braille_ascii += '@S'
+            elif char == '%':
+                braille_ascii += '.0'
+            elif char == '&':
+                braille_ascii += '@&'
+            elif char == "'":
+                if opening_single_quote:
+                    braille_ascii += ',8'
+                    opening_single_quote = False
+                else:
+                    braille_ascii += ',0'
+                    opening_single_quote = False
+            elif char == '(':
+                braille_ascii += '"<'
+            elif char == ')':
+                braille_ascii += '">'
+            elif char == '*':
+                braille_ascii += '"9'
+            elif char == '+':
+                braille_ascii += '"6'
+            elif char == ',':
+                braille_ascii += '1'
+            elif char == '-':
+                braille_ascii += '-'
+            elif char == '.':
+                braille_ascii += '4'
+            elif char == '/':
+                braille_ascii += '_/'
+            elif char == ':':
+                braille_ascii += '3'
+            elif char == ';':
+                braille_ascii += '2'
+            elif char == '>':
+                braille_ascii += '">'
+            elif char == '=':
+                braille_ascii += '"7'
+            elif char == '<':
+                braille_ascii += '"<'
+            elif char == '?':
                 braille_ascii += '8'
-                opening_double_quote = False
+            elif char == '@':
+                braille_ascii += '@A'
+        if char.isupper():  # add upercase symbol
+            braille_ascii += ','
+        if 97 <= ord(char.lower()) <= 122:  # if character is a letter
+            braille_ascii += char.upper()
+        if char.isnumeric():  # if character is a number
+            if index == 0 or (index > 0 and not word[index - 1].isnumeric()):
+                braille_ascii += '#'
+            if char == '0':
+                braille_ascii += 'J'
             else:
-                braille_ascii += '0'
-                opening_double_quote = True
-        elif word == '#':
-            braille_ascii += '#'
-        elif word == '$':
-            braille_ascii += '@S'
-        elif word == '%':
-            braille_ascii += '.0'
-        elif word == '&':
-            braille_ascii += '@&'
-        elif word == "'":
-            if opening_single_quote:
-                braille_ascii += ',8'
-                opening_single_quote = False
-            else:
-                braille_ascii += ',0'
-                opening_single_quote = False
-        elif word == '(':
-            braille_ascii += '"<'
-        elif word == ')':
-            braille_ascii += '">'
-        elif word == '*':
-            braille_ascii += '"9'
-        elif word == '+':
-            braille_ascii += '"6'
-        elif word == ',':
-            braille_ascii += '1'
-        elif word == '-':
-            braille_ascii += '-'
-        elif word == '.':
-            braille_ascii += '4'
-        elif word == '/':
-            braille_ascii += '_/'
-        elif word == ':':
-            braille_ascii += '3'
-        elif word == ';':
-            braille_ascii += '2'
-        elif word == '>':
-            braille_ascii += '">'
-        elif word == '=':
-            braille_ascii += '"7'
-        elif word == '<':
-            braille_ascii += '"<'
-        elif word == '?':
-            braille_ascii += '8'
-        elif word == '@':
-            braille_ascii += '@A'
-    if word.isupper():  # add upercase symbol
-        braille_ascii += ','
-    if 97 <= ord(word.lower()) <= 122:  # if character is a letter
-        braille_ascii += word.upper()
-    if word.isnumeric():  # if character is a number
-        if index == 0 or (index > 0 and not text[index - 1].isnumeric()):
-            braille_ascii += '#'
-        if word == '0':
-            braille_ascii += 'J'
-        else:
-            braille_ascii += chr(ord(word) + 16)
+                braille_ascii += chr(ord(char) + 16)
 
 
 for i in braille_ascii.split():
