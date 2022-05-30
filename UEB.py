@@ -78,7 +78,7 @@ braille = [
 
 # The quick brown fox jumps over the lazy dog
 # text = input()
-text = 'But I like it very.'
+text = "'try' 'this'"
 braille_ascii = ''
 opening_double_quote = True
 opening_single_quote = True
@@ -186,7 +186,7 @@ for word in text.split():
                     opening_single_quote = False
                 else:
                     braille_ascii += ',0'
-                    opening_single_quote = False
+                    opening_single_quote = True
             elif char == '(':
                 braille_ascii += '"<'
             elif char == ')':
