@@ -78,7 +78,7 @@ braille = [
 
 # The quick brown fox jumps over the lazy dog
 # text = input()
-text = 'Have some more.'
+text = 'Have some more'
 braille_ascii = ''
 opening_double_quote = True
 opening_single_quote = True
@@ -86,79 +86,65 @@ print(f"\nUser input is: {text}\n")
 
 for word in text.split():
     braille_ascii += ' '
+    my_word = ''
 
-    if 'but' == word.lower():
-        braille_ascii += 'B'
-        continue
-    elif 'can' == word.lower():
-        braille_ascii += 'C'
-        continue
-    elif 'do' == word.lower():
-        braille_ascii += 'D'
-        continue
-    elif 'every' == word.lower():
-        braille_ascii += 'E'
-        continue
-    elif 'from' == word.lower():
-        braille_ascii += 'F'
-        continue
-    elif 'go' == word.lower():
-        braille_ascii += 'G'
-        continue
-    elif 'have' == word.lower():
-        braille_ascii += 'H'
-        continue
-    elif 'just' == word.lower():
-        braille_ascii += 'J'
-        continue
-    elif 'knowledge' == word.lower():
-        braille_ascii += 'K'
-        continue
-    elif 'like' == word.lower():
-        braille_ascii += 'L'
-        continue
-    elif 'more' == word.lower():
-        braille_ascii += 'M'
-        continue
-    elif 'not' == word.lower():
-        braille_ascii += 'N'
-        continue
-    elif 'people' == word.lower():
-        braille_ascii += 'P'
-        continue
-    elif 'quite' == word.lower():
-        braille_ascii += 'Q'
-        continue
-    elif 'rather' == word.lower():
-        braille_ascii += 'R'
-        continue
-    elif 'so' == word.lower():
-        braille_ascii += 'S'
-        continue
-    elif 'that' == word.lower():
-        braille_ascii += 'T'
-        continue
-    elif 'us' == word.lower():
-        braille_ascii += 'U'
-        continue
-    elif 'very' == word.lower():
-        braille_ascii += 'V'
-        continue
-    elif 'will' == word.lower():
-        braille_ascii += 'W'
-        continue
-    elif 'it' == word.lower():
-        braille_ascii += 'X'
-        continue
-    elif 'you' == word.lower():
-        braille_ascii += 'Y'
-        continue
-    elif 'as' == word.lower():
-        braille_ascii += 'Z'
-        continue
 
     for index, char in enumerate(word):
         # print(char)
+        if char.isupper():  # add upercase symbol
+            braille_ascii += ','
+        if 97 <= ord(char.lower()) <= 122:  # if character is a letter
+            my_word += char.lower()
+        if (my_word and (index == len(word) -1 ) or not (97 <= ord(char.lower()) <= 122)): # If my_word is not and we've reached the end or this character is not a letter
+            if 'but' == my_word:
+                braille_ascii += 'B'
+            elif 'can' == my_word:
+                braille_ascii += 'C'
+            elif 'do' == my_word:
+                braille_ascii += 'D'
+            elif 'every' == my_word:
+                braille_ascii += 'E'
+            elif 'from' == my_word:
+                braille_ascii += 'F'
+            elif 'go' == my_word:
+                braille_ascii += 'G'
+            elif 'have' == my_word:
+                braille_ascii += 'H'
+            elif 'just' == my_word:
+                braille_ascii += 'J'
+            elif 'knowledge' == my_word:
+                braille_ascii += 'K'
+            elif 'like' == my_word:
+                braille_ascii += 'L'
+            elif 'more' == my_word:
+                braille_ascii += 'M'
+            elif 'not' == my_word:
+                braille_ascii += 'N'
+            elif 'people' == my_word:
+                braille_ascii += 'P'
+            elif 'quite' == my_word:
+                braille_ascii += 'Q'
+            elif 'rather' == my_word:
+                braille_ascii += 'R'
+            elif 'so' == my_word:
+                braille_ascii += 'S'
+            elif 'that' == my_word:
+                braille_ascii += 'T'
+            elif 'us' == my_word:
+                braille_ascii += 'U'
+            elif 'very' == my_word:
+                braille_ascii += 'V'
+            elif 'will' == my_word:
+                braille_ascii += 'W'
+            elif 'it' == my_word:
+                braille_ascii += 'X'
+            elif 'you' == my_word:
+                braille_ascii += 'Y'
+            elif 'as' == my_word:
+                braille_ascii += 'Z'
+            else:
+                for char in my_word:
+                    braille_ascii += char.upper()
 
         if char.isspace():
             braille_ascii += " "
@@ -224,10 +210,6 @@ for word in text.split():
                 braille_ascii += 'J'
             else:
                 braille_ascii += chr(ord(char) + 16)
-        if char.isupper():  # add upercase symbol
-            braille_ascii += ','
-        if 97 <= ord(char.lower()) <= 122:  # if character is a letter
-            braille_ascii += char.upper()
 
 
 for i in braille_ascii.split():
