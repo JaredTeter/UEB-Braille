@@ -76,9 +76,22 @@ braille = [
     [['·', 'O'], ['·', 'O'], ['·', 'O']],  # contraction symbol
 ]
 
+word_signs = [['but', 'B'], ['can', 'C'], ['do', 'D'], ['every', 'E'], ['from', 'F'], ['go', 'G'], ['have', 'H'], ['just', 'J'], ['knowledge', 'K'], ['like', 'L'], ['more', 'M'], [
+    'not', 'N'], ['people', 'P'], ['quite', 'Q'], ['rather', 'R'], ['so', 'S'], ['that', 'T'], ['us', 'U'], ['very', 'V'], ['will', 'W'], ['it', 'X'], ['you', 'Y'], ['as', 'Z']]
+
+shortform_words = [['about', 'AB'], ['above', 'ABV'], ['according', 'AC'], ['across', 'ACR'], ['after', 'AF'], ['afternoon', 'AFN'], ['afterward', 'AFW'], ['again', 'AG'], ['against', 'AG/'],
+                    ['almost', 'ALM'], ['already', 'ALR'], ['also', 'AL'], ['although', 'AL?'], ['altogether', 'ALT'],['always', 'ALW'], ['because', '2C'], ['before', '2F'], ['behind', '2H'],
+                    ['below', '2L'], ['beneath', '2N'], ['beside', '2S'], ['between', '2T'], ['beyond', '2Y'], ['blind', 'BL'], ['braille', 'BRL'], ['children', '*N'], ['conceive', '3CV'],
+                    ['conceiving', '3CVG'], ['could', 'CD'], ['deceive', 'DCV'], ['deceiving', 'DCVG'], ['declare', 'DCL'], ['declaring', 'DCLG'], ['either', 'EI'], ['first', 'F/'], ['friend', 'FR'],
+                    ['good', 'GD'], ['great', 'GRT'], ['herself', 'H]F'], ['him', 'HM'], ['himself', 'HMF'], ['immediate', 'imm'], ['its', 'XS'], ['itself', 'XF'], ['letter', 'lr'], ['little', 'll'],
+                    ['much', 'M*'], ['must', 'M/'], ['myself', 'MYF'], ['necessary', 'NEC'], ['neither', 'NEI'], ['oneself', '"OF'], ['ourselves', '\RVS'], ['paid', 'PD'], ['perceive', 'P]CV'],
+                    ['perceiving', 'P]CVG'], ['perhaps', 'P]H'], ['quick', 'QK'], ['receive', 'RCV'], ['receiving', 'RCVG'], ['rejoice', 'RJC'], ['rejoiceing', 'RJCG'], ['said', 'SD'], ['should', '%D'],
+                    ['such', 'S*'], ['themselves', '!MVS'], ['thyself', '?YF'], ['today', 'TD'], ['together', 'TGR'], ['tomorrow', 'TM'], ['tonight', 'TN'], ['would', 'WD'], ['your', 'YR'], ['yourself', 'YRF'],
+                    ['yourselves', 'YRVS']]
+
 # The quick brown fox jumps over the lazy dog
 # text = input()
-text = "It's about time."
+text = "Cool time."
 braille_ascii = ''
 opening_double_quote = True
 opening_single_quote = True
@@ -88,213 +101,24 @@ for word in text.split():
     braille_ascii += ' '
     my_word = ''
 
-
     for index, char in enumerate(word):
         # print(char)
         if char.isupper():  # add upercase symbol
             braille_ascii += ','
         if 97 <= ord(char.lower()) <= 122:  # if character is a letter
             my_word += char.lower()
-        if (my_word and (index == len(word) -1 ) or not (97 <= ord(char.lower()) <= 122)): # If my_word is not and we've reached the end or this character is not a letter
-            if 'but' == my_word: # Alphabetic Wordsigns
-                braille_ascii += 'B'
-            elif 'can' == my_word:
-                braille_ascii += 'C'
-            elif 'do' == my_word:
-                braille_ascii += 'D'
-            elif 'every' == my_word:
-                braille_ascii += 'E'
-            elif 'from' == my_word:
-                braille_ascii += 'F'
-            elif 'go' == my_word:
-                braille_ascii += 'G'
-            elif 'have' == my_word:
-                braille_ascii += 'H'
-            elif 'just' == my_word:
-                braille_ascii += 'J'
-            elif 'knowledge' == my_word:
-                braille_ascii += 'K'
-            elif 'like' == my_word:
-                braille_ascii += 'L'
-            elif 'more' == my_word:
-                braille_ascii += 'M'
-            elif 'not' == my_word:
-                braille_ascii += 'N'
-            elif 'people' == my_word:
-                braille_ascii += 'P'
-            elif 'quite' == my_word:
-                braille_ascii += 'Q'
-            elif 'rather' == my_word:
-                braille_ascii += 'R'
-            elif 'so' == my_word:
-                braille_ascii += 'S'
-            elif 'that' == my_word:
-                braille_ascii += 'T'
-            elif 'us' == my_word:
-                braille_ascii += 'U'
-            elif 'very' == my_word:
-                braille_ascii += 'V'
-            elif 'will' == my_word:
-                braille_ascii += 'W'
-            elif 'it' == my_word:
-                braille_ascii += 'X'
-            elif 'you' == my_word:
-                braille_ascii += 'Y'
-            elif 'as' == my_word:
-                braille_ascii += 'Z'
-            elif 'about' == my_word: # Shortform Words
-                braille_ascii += 'AB'
-            elif 'above' == my_word:
-                braille_ascii += 'ABV'
-            elif 'according' == my_word:
-                braille_ascii += 'AC'
-            elif 'across' == my_word:
-                braille_ascii += 'ACR'
-            elif 'after' == my_word:
-                braille_ascii += 'AF'
-            elif 'afternoon' == my_word:
-                braille_ascii += 'AFN'
-            elif 'afterward' == my_word:
-                braille_ascii += 'AFW'
-            elif 'again' == my_word:
-                braille_ascii += 'AG'
-            elif 'against' == my_word:
-                braille_ascii += 'AG/'
-            elif 'almost' == my_word:
-                braille_ascii += 'ALM'
-            elif 'already' == my_word:
-                braille_ascii += 'ALR'
-            elif 'also' == my_word:
-                braille_ascii += 'AL'
-            elif 'although' == my_word:
-                braille_ascii += 'AL?'
-            elif 'altogether' == my_word:
-                braille_ascii += 'ALT'
-            elif 'always' == my_word:
-                braille_ascii += 'ALW'
-            elif 'because' == my_word:
-                braille_ascii += '2C'
-            elif 'before' == my_word:
-                braille_ascii += '2F'
-            elif 'behind' == my_word:
-                braille_ascii += '2H'
-            elif 'below' == my_word:
-                braille_ascii += '2L'
-            elif 'beneath' == my_word:
-                braille_ascii += '2N'
-            elif 'beside' == my_word:
-                braille_ascii += '2S'
-            elif 'between' == my_word:
-                braille_ascii += '2T'
-            elif 'beyond' == my_word:
-                braille_ascii += '2Y'
-            elif 'blind' == my_word:
-                braille_ascii += 'BL'
-            elif 'braille' == my_word:
-                braille_ascii += 'BRL'
-            elif 'children' == my_word:
-                braille_ascii += '*N'
-            elif 'conceive' == my_word:
-                braille_ascii += '3CV'
-            elif 'conceiving' == my_word:
-                braille_ascii += '3CVG'
-            elif 'could' == my_word:
-                braille_ascii += 'CD'
-            elif 'deceive' == my_word:
-                braille_ascii += 'DCV'
-            elif 'deceiving' == my_word:
-                braille_ascii += 'DCVG'
-            elif 'declare' == my_word:
-                braille_ascii += 'DCL'
-            elif 'declaring' == my_word:
-                braille_ascii += 'DCLG'
-            elif 'either' == my_word:
-                braille_ascii += 'EI'
-            elif 'first' == my_word:
-                braille_ascii += 'F/'
-            elif 'friend' == my_word:
-                braille_ascii += 'FR'
-            elif 'good' == my_word:
-                braille_ascii += 'GD'
-            elif 'great' == my_word:
-                braille_ascii += 'GRT'
-            elif 'herself' == my_word:
-                braille_ascii += 'H]F'
-            elif 'him' == my_word:
-                braille_ascii += 'HM'
-            elif 'himself' == my_word:
-                braille_ascii += 'HMF'
-            elif 'immediate' == my_word:
-                braille_ascii += 'imm'
-            elif 'its' == my_word:
-                braille_ascii += 'XS'
-            elif 'itself' == my_word:
-                braille_ascii += 'XF'
-            elif 'letter' == my_word:
-                braille_ascii += 'lr'
-            elif 'little' == my_word:
-                braille_ascii += 'll'
-            elif 'much' == my_word:
-                braille_ascii += 'M*'
-            elif 'must' == my_word:
-                braille_ascii += 'M/'
-            elif 'myself' == my_word:
-                braille_ascii += 'MYF'
-            elif 'necessary' == my_word:
-                braille_ascii += 'NEC'
-            elif 'neither' == my_word:
-                braille_ascii += 'NEI'
-            elif 'oneself' == my_word:
-                braille_ascii += '"OF'
-            elif 'ourselves' == my_word:
-                braille_ascii += '\RVS'
-            elif 'paid' == my_word:
-                braille_ascii += 'PD'
-            elif 'perceive' == my_word:
-                braille_ascii += 'P]CV'
-            elif 'perceiving' == my_word:
-                braille_ascii += 'P]CVG'
-            elif 'perhaps' == my_word:
-                braille_ascii += 'P]H'
-            elif 'quick' == my_word:
-                braille_ascii += 'QK'
-            elif 'receive' == my_word:
-                braille_ascii += 'RCV'
-            elif 'receiving' == my_word:
-                braille_ascii += 'RCVG'
-            elif 'rejoice' == my_word:
-                braille_ascii += 'RJC'
-            elif 'rejoiceing' == my_word:
-                braille_ascii += 'RJCG'
-            elif 'said' == my_word:
-                braille_ascii += 'SD'
-            elif 'should' == my_word:
-                braille_ascii += '%D'
-            elif 'such' == my_word:
-                braille_ascii += 'S*'
-            elif 'themselves' == my_word:
-                braille_ascii += '!MVS'
-            elif 'thyself' == my_word:
-                braille_ascii += '?YF'
-            elif 'today' == my_word:
-                braille_ascii += 'TD'
-            elif 'together' == my_word:
-                braille_ascii += 'TGR'
-            elif 'tomorrow' == my_word:
-                braille_ascii += 'TM'
-            elif 'tonight' == my_word:
-                braille_ascii += 'TN'
-            elif 'would' == my_word:
-                braille_ascii += 'WD'
-            elif 'your' == my_word:
-                braille_ascii += 'YR'
-            elif 'yourself' == my_word:
-                braille_ascii += 'YRF'
-            elif 'yourselves' == my_word:
-                braille_ascii += 'YRVS'
-            else:
-                for char in my_word:
-                    braille_ascii += char.upper()
+        # If my_word is not and we've reached the end or this character is not a letter
+        if (my_word and (index == len(word) - 1) or not (97 <= ord(char.lower()) <= 122)):
+            for i in word_signs:
+                if i[0] == my_word:
+                    braille_ascii += i[1]
+                    my_word = ''
+            for i in shortform_words:
+                if i[0] == my_word:
+                    braille_ascii += i[1]
+                    my_word = ''
+            for char in my_word:
+                braille_ascii += char.upper()
 
         if char.isspace():
             braille_ascii += " "
@@ -373,7 +197,7 @@ for word in braille_ascii.split():
     for x in range(3):
         for letter in word:
             cell = ord(letter) - 32
-            print(braille[cell][x][0] + ' ' + braille[cell][x][1], end = "   ")
+            print(braille[cell][x][0] + ' ' + braille[cell][x][1], end="   ")
         print('')
 
 print("\nEnd of the program\n")
