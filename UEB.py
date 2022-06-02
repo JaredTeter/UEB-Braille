@@ -91,7 +91,7 @@ shortform_words = [['about', 'AB'], ['above', 'ABV'], ['according', 'AC'], ['acr
 
 # The quick brown fox jumps over the lazy dog
 # text = input()
-text = "It works!"
+text = "It works!!!"
 braille_ascii = ''
 opening_double_quote = True
 opening_single_quote = True
@@ -121,6 +121,7 @@ for word in text.split():
                     break
             for letter in my_word:
                 braille_ascii += letter.upper()
+            my_word = ''
 
         #if char.isspace():
             #braille_ascii += " "
