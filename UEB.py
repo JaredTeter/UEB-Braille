@@ -91,7 +91,7 @@ shortform_words = [['about', 'AB'], ['above', 'ABV'], ['according', 'AC'], ['acr
 
 # The quick brown fox jumps over the lazy dog
 # text = input()
-text = "Cool time."
+text = "It works!"
 braille_ascii = ''
 opening_double_quote = True
 opening_single_quote = True
@@ -107,21 +107,23 @@ for word in text.split():
             braille_ascii += ','
         if 97 <= ord(char.lower()) <= 122:  # if character is a letter
             my_word += char.lower()
-        # If my_word is not and we've reached the end or this character is not a letter
+        # If my_word is not empty and we've reached the end or this character is not a letter
         if (my_word and (index == len(word) - 1) or not (97 <= ord(char.lower()) <= 122)):
             for i in word_signs:
                 if i[0] == my_word:
                     braille_ascii += i[1]
                     my_word = ''
+                    break
             for i in shortform_words:
                 if i[0] == my_word:
                     braille_ascii += i[1]
                     my_word = ''
-            for char in my_word:
-                braille_ascii += char.upper()
+                    break
+            for letter in my_word:
+                braille_ascii += letter.upper()
 
-        if char.isspace():
-            braille_ascii += " "
+        #if char.isspace():
+            #braille_ascii += " "
         if 33 <= ord(char) <= 47 or 58 <= ord(char) <= 64:  # if character is a symbol
             if char == '!':
                 braille_ascii += '6'
