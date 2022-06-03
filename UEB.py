@@ -99,12 +99,16 @@ initial_letter_contractions = [
     ['part', '"P'], ['question', '"Q'], ['right', '"R'], ['some', '"S'], ['time', '"T'], ['under', '"U'], ['work', '"W'], ['young', '"Y'],
     ['there', '"!'],  ['character', '"*'], ['through', '"?'], ['where', '":'], ['ought', '"' + chr(92)],  ['upon', '^U'], ['word', '^W'],
     ['these', '^!'], ['those', '^?'], ['whose', '^:'],  ['cannot', '_C'], ['had', '_H'], ['many', '_M'], ['spirit', '_S'], ['world', '_W'],
-    ['their', '_!'],
+    ['their', '_!']
+]
+
+strong_worsigns = [
+    ['child', '*'], ['shall', '%'], ['this', '?'], ['which', ':'], ['out', chr(92)], ['still', '/'],
 ]
 
 # The quick brown fox jumps over the lazy dog
 # text = input()
-text = "Many spirit world their"
+text = "child shall this, which out still."
 braille_ascii = ''
 opening_double_quote = True
 opening_single_quote = True
@@ -128,6 +132,11 @@ for word in text.split():
                     my_word = ''
                     break
             for i in shortform_words:
+                if i[0] == my_word:
+                    braille_ascii += i[1]
+                    my_word = ''
+                    break
+            for i in strong_worsigns:
                 if i[0] == my_word:
                     braille_ascii += i[1]
                     my_word = ''
