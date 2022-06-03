@@ -102,13 +102,18 @@ initial_letter_contractions = [
     ['their', '_!']
 ]
 
-strong_worsigns = [
-    ['child', '*'], ['shall', '%'], ['this', '?'], ['which', ':'], ['out', chr(92)], ['still', '/'],
+strong_wordsigns = [
+    ['child', '*'], ['shall', '%'], ['this', '?'], ['which', ':'], ['out', chr(92)], ['still', '/']
+]
+
+lower_wordsigns = [
+    ['ch', '*'], ['sh', '%'], ['th', '?'], ['wh', ':'], ['ou', chr(92)], ['st', '/'], ['gh', '<'], ['ed', '$'], ['er', ']'], ['ow', '['],
+    ['ar', '>'], ['ing', '+'],
 ]
 
 # The quick brown fox jumps over the lazy dog
 # text = input()
-text = "child shall this, which out still."
+text = "ch sh th wh ou st gh ed er ow ar ing"
 braille_ascii = ''
 opening_double_quote = True
 opening_single_quote = True
@@ -136,12 +141,12 @@ for word in text.split():
                     braille_ascii += i[1]
                     my_word = ''
                     break
-            for i in strong_worsigns:
+            for i in strong_wordsigns:
                 if i[0] == my_word:
                     braille_ascii += i[1]
                     my_word = ''
                     break
-            for i in initial_letter_contractions:
+            for i in lower_wordsigns:
                 if i[0] == my_word:
                     braille_ascii += i[1]
                     my_word = ''
