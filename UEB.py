@@ -106,7 +106,7 @@ strong_wordsigns = [
     ['child', '*'], ['shall', '%'], ['this', '?'], ['which', ':'], ['out', chr(92)], ['still', '/']
 ]
 
-lower_wordsigns = [
+strong_groupsigns = [
     ['ch', '*'], ['sh', '%'], ['th', '?'], ['wh', ':'], ['ou', chr(92)], ['st', '/'], ['gh', '<'], ['ed', '$'], ['er', ']'], ['ow', '['],
     ['ar', '>'], ['ing', '+'],
 ]
@@ -146,7 +146,7 @@ for word in text.split():
                     braille_ascii += i[1]
                     my_word = ''
                     break
-            for i in lower_wordsigns:
+            for i in strong_groupsigns:
                 if i[0] == my_word:
                     braille_ascii += i[1]
                     my_word = ''
