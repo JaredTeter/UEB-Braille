@@ -113,7 +113,7 @@ strong_groupsigns = [
 
 # The quick brown fox jumps over the lazy dog
 # text = input()
-text = "ch sh th wh ou st gh ed er ow ar ing"
+text = "boughtought"
 braille_ascii = ''
 opening_double_quote = True
 opening_single_quote = True
@@ -131,6 +131,7 @@ for word in text.split():
             my_word += char.lower()
         # If my_word is not empty and we've reached the end or this character is not a letter
         if (my_word and (index == len(word) - 1) or not (97 <= ord(char.lower()) <= 122)):
+            count = len(my_word)
             for i in word_signs:
                 if i[0] == my_word:
                     braille_ascii += i[1]
@@ -146,13 +147,21 @@ for word in text.split():
                     braille_ascii += i[1]
                     my_word = ''
                     break
-            for i in strong_groupsigns:
-                if i[0] == my_word:
-                    braille_ascii += i[1]
-                    my_word = ''
-                    break
-            for letter in my_word:
-                braille_ascii += letter.upper()
+            count = 0
+            while count < len(my_word):
+                for i in initial_letter_contractions:
+                    if my_word.find(i[0]) == count:
+                        braille_ascii += i[1]
+                        count += len(i[0])
+                        break
+                for i in strong_groupsigns:
+                    if my_word.find(i[0]) == count:
+                        braille_ascii += i[1]
+                        count += len(i[0])
+                        break
+                if count < len(my_word):
+                    braille_ascii += my_word[count].upper()
+                count += 1
             my_word = ''
 
         #if char.isspace():
