@@ -76,22 +76,35 @@ braille = [
     [['·', 'O'], ['·', 'O'], ['·', 'O']],  # contraction symbol
 ]
 
-word_signs = [['but', 'B'], ['can', 'C'], ['do', 'D'], ['every', 'E'], ['from', 'F'], ['go', 'G'], ['have', 'H'], ['just', 'J'], ['knowledge', 'K'], ['like', 'L'], ['more', 'M'], [
-    'not', 'N'], ['people', 'P'], ['quite', 'Q'], ['rather', 'R'], ['so', 'S'], ['that', 'T'], ['us', 'U'], ['very', 'V'], ['will', 'W'], ['it', 'X'], ['you', 'Y'], ['as', 'Z']]
+word_signs = [
+    ['but', 'B'], ['can', 'C'], ['do', 'D'], ['every', 'E'], ['from', 'F'], ['go', 'G'], ['have', 'H'], ['just', 'J'], ['knowledge', 'K'], ['like', 'L'], 
+    ['more', 'M'], ['not', 'N'], ['people', 'P'], ['quite', 'Q'], ['rather', 'R'], ['so', 'S'], ['that', 'T'], ['us', 'U'], ['very', 'V'], ['will', 'W'], 
+    ['it', 'X'], ['you', 'Y'], ['as', 'Z']
+]
 
-shortform_words = [['about', 'AB'], ['above', 'ABV'], ['according', 'AC'], ['across', 'ACR'], ['after', 'AF'], ['afternoon', 'AFN'], ['afterward', 'AFW'], ['again', 'AG'], ['against', 'AG/'],
-                    ['almost', 'ALM'], ['already', 'ALR'], ['also', 'AL'], ['although', 'AL?'], ['altogether', 'ALT'],['always', 'ALW'], ['because', '2C'], ['before', '2F'], ['behind', '2H'],
-                    ['below', '2L'], ['beneath', '2N'], ['beside', '2S'], ['between', '2T'], ['beyond', '2Y'], ['blind', 'BL'], ['braille', 'BRL'], ['children', '*N'], ['conceive', '3CV'],
-                    ['conceiving', '3CVG'], ['could', 'CD'], ['deceive', 'DCV'], ['deceiving', 'DCVG'], ['declare', 'DCL'], ['declaring', 'DCLG'], ['either', 'EI'], ['first', 'F/'], ['friend', 'FR'],
-                    ['good', 'GD'], ['great', 'GRT'], ['herself', 'H]F'], ['him', 'HM'], ['himself', 'HMF'], ['immediate', 'imm'], ['its', 'XS'], ['itself', 'XF'], ['letter', 'lr'], ['little', 'll'],
-                    ['much', 'M*'], ['must', 'M/'], ['myself', 'MYF'], ['necessary', 'NEC'], ['neither', 'NEI'], ['oneself', '"OF'], ['ourselves', '\RVS'], ['paid', 'PD'], ['perceive', 'P]CV'],
-                    ['perceiving', 'P]CVG'], ['perhaps', 'P]H'], ['quick', 'QK'], ['receive', 'RCV'], ['receiving', 'RCVG'], ['rejoice', 'RJC'], ['rejoiceing', 'RJCG'], ['said', 'SD'], ['should', '%D'],
-                    ['such', 'S*'], ['themselves', '!MVS'], ['thyself', '?YF'], ['today', 'TD'], ['together', 'TGR'], ['tomorrow', 'TM'], ['tonight', 'TN'], ['would', 'WD'], ['your', 'YR'], ['yourself', 'YRF'],
-                    ['yourselves', 'YRVS']]
+shortform_words = [
+    ['about', 'AB'], ['above', 'ABV'], ['according', 'AC'], ['across', 'ACR'], ['after', 'AF'], ['afternoon', 'AFN'], ['afterward', 'AFW'], ['again', 'AG'], ['against', 'AG/'],
+    ['almost', 'ALM'], ['already', 'ALR'], ['also', 'AL'], ['although', 'AL?'], ['altogether', 'ALT'],['always', 'ALW'], ['because', '2C'], ['before', '2F'], ['behind', '2H'],
+    ['below', '2L'], ['beneath', '2N'], ['beside', '2S'], ['between', '2T'], ['beyond', '2Y'], ['blind', 'BL'], ['braille', 'BRL'], ['children', '*N'], ['conceive', '3CV'],
+    ['conceiving', '3CVG'], ['could', 'CD'], ['deceive', 'DCV'], ['deceiving', 'DCVG'], ['declare', 'DCL'], ['declaring', 'DCLG'], ['either', 'EI'], ['first', 'F/'], ['friend', 'FR'],
+    ['good', 'GD'], ['great', 'GRT'], ['herself', 'H]F'], ['him', 'HM'], ['himself', 'HMF'], ['immediate', 'imm'], ['its', 'XS'], ['itself', 'XF'], ['letter', 'lr'], ['little', 'll'],
+    ['much', 'M*'], ['must', 'M/'], ['myself', 'MYF'], ['necessary', 'NEC'], ['neither', 'NEI'], ['oneself', '"OF'], ['ourselves', '\RVS'], ['paid', 'PD'], ['perceive', 'P]CV'],
+    ['perceiving', 'P]CVG'], ['perhaps', 'P]H'], ['quick', 'QK'], ['receive', 'RCV'], ['receiving', 'RCVG'], ['rejoice', 'RJC'], ['rejoiceing', 'RJCG'], ['said', 'SD'], ['should', '%D'],
+    ['such', 'S*'], ['themselves', '!MVS'], ['thyself', '?YF'], ['today', 'TD'], ['together', 'TGR'], ['tomorrow', 'TM'], ['tonight', 'TN'], ['would', 'WD'], ['your', 'YR'], ['yourself', 'YRF'],
+    ['yourselves', 'YRVS']
+]
+
+initial_letter_contractions = [
+    ['day', '"D'], ['ever', '"E'], ['father', '"F'], ['here', '"G'], ['know', '"K'], ['lord', '"L'], ['mother', '"M'], ['name', '"N'], ['one', '"O'],
+    ['part', '"P'], ['question', '"Q'], ['right', '"R'], ['some', '"S'], ['time', '"T'], ['under', '"U'], ['work', '"W'], ['young', '"Y'],
+    ['there', '"!'],  ['character', '"*'], ['through', '"?'], ['where', '":'], ['ought', '"' + chr(92)],  ['upon', '^U'], ['word', '^W'],
+    ['these', '^!'], ['those', '^?'], ['whose', '^:'],  ['cannot', '_C'], ['had', '_H'], ['many', '_M'], ['spirit', '_S'], ['world', '_W'],
+    ['their', '_!'],
+]
 
 # The quick brown fox jumps over the lazy dog
 # text = input()
-text = "It works!!!"
+text = "Many spirit world their"
 braille_ascii = ''
 opening_double_quote = True
 opening_single_quote = True
@@ -115,6 +128,11 @@ for word in text.split():
                     my_word = ''
                     break
             for i in shortform_words:
+                if i[0] == my_word:
+                    braille_ascii += i[1]
+                    my_word = ''
+                    break
+            for i in initial_letter_contractions:
                 if i[0] == my_word:
                     braille_ascii += i[1]
                     my_word = ''
