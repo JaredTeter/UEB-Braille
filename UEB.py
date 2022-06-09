@@ -111,6 +111,28 @@ strong_groupsigns = [
     ['ar', '>'], ['ing', '+'],
 ]
 
+strong_contractions = [
+    ['and', '&'], ['for', '='], ['of', '('], ['the', '!'], ['with', ')']
+]
+
+final_letter_groupsigns = [
+    ['ound', '.D'], ['ance', '.E'], ['sion', '.N'], ['less', '.S'], ['ount', '.T'], ['ence', ';E'], ['ong', ';G'], ['ful', ';L'], ['tion', ';T'],
+    ['ness', ';S'], ['ment', ';T'], ['ity', ';Y']
+]
+
+lower_groupsigns_in_word = [ # cannot be used at the end or beginning of a word
+    ['ea', '1'], ['bb', '2'], ['cc', '3'], ['ff', '6'], ['gg', '7']
+]
+
+lower_groupsigns_begin = [
+    ['be', '2'], ['con', '3'], ['dis', '4'], ['en', '5'], ['in', '9'] # Need to deal with these separately because of the different rules within this group
+]
+
+lower_wordsigns = [
+    ['be', '2'], ['enough', '5'], ['were', '7'], ['his', '8'], ['in', '9'], ['was', '0']
+]
+
+
 # The quick brown fox jumps over the lazy dog
 # text = input()
 text = "Bought"
@@ -150,7 +172,6 @@ for word in text.split():
             count = 0
             restart = False
             while count < len(my_word):
-                print("restarted my_word = " + my_word)
                 for i in initial_letter_contractions:
                     if my_word.find(i[0], count) == count:
                         braille_ascii += i[1]
@@ -159,9 +180,7 @@ for word in text.split():
                         break
                 if restart == True:
                     restart = False
-                    print('about to restart')
                     continue
-                print("didn't restart at this point")
                 for i in strong_groupsigns:
                     if my_word.find(i[0], count) == count:
                         braille_ascii += i[1]
@@ -170,9 +189,7 @@ for word in text.split():
                         break
                 if restart == True:
                     restart = False
-                    print('about to restart')
                     continue
-                print("didn't restart at this point")
                 if count < len(my_word):
                     braille_ascii += my_word[count].upper()
                 count += 1
@@ -248,7 +265,6 @@ for word in text.split():
 
 for i in braille_ascii.split():
     print(i)
-print('\n')
 
 for word in braille_ascii.split():
     print('\n' + word)
