@@ -113,7 +113,7 @@ strong_groupsigns = [
 
 # The quick brown fox jumps over the lazy dog
 # text = input()
-text = "boughtought"
+text = "Bought"
 braille_ascii = ''
 opening_double_quote = True
 opening_single_quote = True
@@ -148,17 +148,31 @@ for word in text.split():
                     my_word = ''
                     break
             count = 0
+            restart = False
             while count < len(my_word):
+                print("restarted my_word = " + my_word)
                 for i in initial_letter_contractions:
-                    if my_word.find(i[0]) == count:
+                    if my_word.find(i[0], count) == count:
                         braille_ascii += i[1]
                         count += len(i[0])
+                        restart = True
                         break
+                if restart == True:
+                    restart = False
+                    print('about to restart')
+                    continue
+                print("didn't restart at this point")
                 for i in strong_groupsigns:
-                    if my_word.find(i[0]) == count:
+                    if my_word.find(i[0], count) == count:
                         braille_ascii += i[1]
                         count += len(i[0])
+                        restart = True
                         break
+                if restart == True:
+                    restart = False
+                    print('about to restart')
+                    continue
+                print("didn't restart at this point")
                 if count < len(my_word):
                     braille_ascii += my_word[count].upper()
                 count += 1
