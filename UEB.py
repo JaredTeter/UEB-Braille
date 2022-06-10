@@ -135,7 +135,7 @@ lower_wordsigns = [
 
 # The quick brown fox jumps over the lazy dog
 # text = input()
-text = "Bought"
+text = "A pound of candy with beans."
 braille_ascii = ''
 opening_double_quote = True
 opening_single_quote = True
@@ -173,6 +173,24 @@ for word in text.split():
             restart = False
             while count < len(my_word):
                 for i in initial_letter_contractions:
+                    if my_word.find(i[0], count) == count:
+                        braille_ascii += i[1]
+                        count += len(i[0])
+                        restart = True
+                        break
+                if restart == True:
+                    restart = False
+                    continue
+                for i in strong_contractions:
+                    if my_word.find(i[0], count) == count:
+                        braille_ascii += i[1]
+                        count += len(i[0])
+                        restart = True
+                        break
+                if restart == True:
+                    restart = False
+                    continue
+                for i in final_letter_groupsigns:
                     if my_word.find(i[0], count) == count:
                         braille_ascii += i[1]
                         count += len(i[0])
