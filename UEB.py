@@ -135,7 +135,7 @@ lower_wordsigns = [
 
 # The quick brown fox jumps over the lazy dog
 # text = input()
-text = "A pound of candy with beans."
+text = "Reach each idea."
 braille_ascii = ''
 opening_double_quote = True
 opening_single_quote = True
@@ -205,6 +205,16 @@ for word in text.split():
                         count += len(i[0])
                         restart = True
                         break
+                if restart == True:
+                    restart = False
+                    continue
+                if 0 < count < (len(my_word) -2):
+                    for i in lower_groupsigns_in_word:
+                        if my_word.find(i[0], count) == count:
+                            braille_ascii += i[1]
+                            count += len(i[0])
+                            restart = True
+                            break
                 if restart == True:
                     restart = False
                     continue
