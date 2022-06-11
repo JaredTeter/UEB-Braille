@@ -135,7 +135,7 @@ lower_wordsigns = [
 
 # The quick brown fox jumps over the lazy dog
 # text = input()
-text = "Reach each idea."
+text = "This will be enough. It was in his house."
 braille_ascii = ''
 opening_double_quote = True
 opening_single_quote = True
@@ -155,6 +155,11 @@ for word in text.split():
         if (my_word and (index == len(word) - 1) or not (97 <= ord(char.lower()) <= 122)):
             count = len(my_word)
             for i in word_signs:
+                if i[0] == my_word:
+                    braille_ascii += i[1]
+                    my_word = ''
+                    break
+            for i in lower_wordsigns:
                 if i[0] == my_word:
                     braille_ascii += i[1]
                     my_word = ''
