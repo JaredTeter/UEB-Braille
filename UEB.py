@@ -153,7 +153,6 @@ for word in text.split():
             my_word += char.lower()
         # If my_word is not empty and we've reached the end or this character is not a letter
         if (my_word and (index == len(word) - 1) or not (97 <= ord(char.lower()) <= 122)):
-            #count = len(my_word)
             for i in wordsigns:
                 if i[0] == my_word:
                     braille_ascii += i[1]
