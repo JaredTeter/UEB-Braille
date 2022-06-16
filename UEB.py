@@ -153,17 +153,18 @@ for word in text.split():
             my_word += char.lower()
         # If my_word is not empty and we've reached the end or this character is not a letter
         if (my_word and (index == len(word) - 1) or not (97 <= ord(char.lower()) <= 122)):
-            count = len(my_word)
+            #count = len(my_word)
             for i in word_signs:
                 if i[0] == my_word:
                     braille_ascii += i[1]
                     my_word = ''
                     break
-            for i in lower_wordsigns:
-                if i[0] == my_word:
-                    braille_ascii += i[1]
-                    my_word = ''
-                    break
+            if 97 <= ord(char.lower()) <= 122:
+                for i in lower_wordsigns:
+                    if i[0] == my_word:
+                        braille_ascii += i[1]
+                        my_word = ''
+                        break
             for i in shortform_words:
                 if i[0] == my_word:
                     braille_ascii += i[1]
