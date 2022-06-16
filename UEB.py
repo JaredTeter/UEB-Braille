@@ -121,11 +121,11 @@ final_letter_groupsigns = [
 ]
 
 lower_groupsigns_in_word = [ # cannot be used at the end or beginning of a word
-    ['ea', '1'], ['bb', '2'], ['cc', '3'], ['ff', '6'], ['gg', '7']
+    ['ea', '1'], ['bb', '2'], ['cc', '3'], ['ff', '6'], ['gg', '7'], ['en', '5'], ['in', '9']
 ]
 
 lower_groupsigns_begin = [
-    ['be', '2'], ['con', '3'], ['dis', '4'], ['en', '5'], ['in', '9'] # Need to deal with these separately because of the different rules within this group
+    ['be', '2'], ['con', '3'], ['dis', '4'], ['en', '5'], ['in', '9']
 ]
 
 lower_wordsigns = [
@@ -135,7 +135,7 @@ lower_wordsigns = [
 
 # The quick brown fox jumps over the lazy dog
 # text = input()
-text = "This will be enough. It was in his house."
+text = "Enumerate continually"
 braille_ascii = ''
 opening_double_quote = True
 opening_single_quote = True
@@ -211,6 +211,16 @@ for word in text.split():
                         count += len(i[0])
                         restart = True
                         break
+                if restart == True:
+                    restart = False
+                    continue
+                if count == 0:
+                    for i in lower_groupsigns_begin:
+                        if my_word.find(i[0], count) == count:
+                            braille_ascii += i[1]
+                            count += len(i[0])
+                            restart = True
+                            break
                 if restart == True:
                     restart = False
                     continue
