@@ -76,7 +76,7 @@ braille = [
     [['·', 'O'], ['·', 'O'], ['·', 'O']],  # contraction symbol
 ]
 
-word_signs = [
+wordsigns = [
     ['but', 'B'], ['can', 'C'], ['do', 'D'], ['every', 'E'], ['from', 'F'], ['go', 'G'], ['have', 'H'], ['just', 'J'], ['knowledge', 'K'], ['like', 'L'], 
     ['more', 'M'], ['not', 'N'], ['people', 'P'], ['quite', 'Q'], ['rather', 'R'], ['so', 'S'], ['that', 'T'], ['us', 'U'], ['very', 'V'], ['will', 'W'], 
     ['it', 'X'], ['you', 'Y'], ['as', 'Z']
@@ -154,7 +154,7 @@ for word in text.split():
         # If my_word is not empty and we've reached the end or this character is not a letter
         if (my_word and (index == len(word) - 1) or not (97 <= ord(char.lower()) <= 122)):
             #count = len(my_word)
-            for i in word_signs:
+            for i in wordsigns:
                 if i[0] == my_word:
                     braille_ascii += i[1]
                     my_word = ''
